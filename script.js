@@ -1,13 +1,29 @@
-setInterval(function() {
+function pad(str) {
+    return String(str).padStart(2, '0');
+  }
+
+function formatDate(dt) {
+    const year = dt.getFullyear();
+    const month = dt.getMonth();
+    const day = dt.getUTCDate();
     
-    const today = new Date();
-    const day = today.getUTCDate();
-    const second  = today.getSeconds(); 
-    const minutes = today.getMinutes();
-    const hours = today.getHours();
-    const month = today.getMonth();
-    const year = today.getFullYear();
- 
-    document.getElementById("time").innerText = String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(second).padStart(2, '0'); 
-    document.getElementById("date").innerText = day + '.' + month + '.' + year;
-}, 1000);   
+    return year + '.' + month + '.' + day
+  } 
+
+function formatTime(dt) {
+    const hours = dt.getHours();
+    const minutes = dt.getMinutes();
+    const second = dt.getSeconds();
+  
+    return pad(hours) + ':' + pad(minutes) + ':' + pad(second);
+  }
+
+function SetTime() {
+    const now = new Date();
+    
+    document.getElementById("time").innerText = formatTime(now);
+    document.getElementById("date").innerText = formatDate(now);
+
+  }
+
+setInterval(SetTime,1000);

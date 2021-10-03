@@ -3,7 +3,7 @@ function pad(str) {
   }
 
 function formatDate(dt) {
-    const year = dt.getFullyear();
+    const year = dt.getFullYear();
     const month = dt.getMonth();
     const day = dt.getUTCDate();
     
@@ -22,8 +22,8 @@ function SetTime() {
     const now = new Date();
     
     document.getElementById("time").innerText = formatTime(now);
-    //document.getElementById("date").innerText = formatDate(now); // не выводится, как-будто зацикливается. Если ставлю вначало, то не выводится даже время 
-    document.getElementById("date").innerText = pad(now.getUTCDate()) + '.' + pad(now.getMonth()) + '.' + now.getUTCFullYear();
+    document.getElementById("date").innerText = formatDate(now); 
+    //document.getElementById("date").innerText = pad(now.getUTCDate()) + '.' + pad(now.getMonth()) + '.' + now.getUTCFullYear();
 
   }
 
